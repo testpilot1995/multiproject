@@ -9,18 +9,21 @@ dotenv.config({ path: './tests/shared/configs/.env' });
  */
 export default defineConfig({
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
+   reporter: [
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['list'],
+  ],
   use: {
-    trace: "on-first-retry",
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
+  retries: 1,
   projects: [
     {
       name: "UI",
       testDir: "./tests/UI",
-      use: { ...devices["Desktop Chrome"], baseURL: process.env.API_BASE_URL },
     },
 
     {
