@@ -6,12 +6,12 @@ import { UserResponse } from "../../modules/type/userResponse";
 const bearerToken = process.env.BEARER_TOKEN;
 let createNewUserResponse: UserResponse;
 
-test("Create new user", async ({ request }) => {
+test("Create a new user", async ({ request }) => {
   const userData = generateUser();
   const createNewUser = await Users.createNewUser(
     request,
     bearerToken!,
-    userData
+    userData,
   );
   expect.soft(createNewUser.status()).toBe(201);
   createNewUserResponse = (await createNewUser.json()) as UserResponse;

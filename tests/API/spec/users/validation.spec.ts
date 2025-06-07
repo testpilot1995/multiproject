@@ -1,7 +1,12 @@
 import { test, expect } from "@playwright/test";
-import { emailCases, genderCases, nameCases, statusCases, ValidationCase } from "../../modules/validation/validationMatrix";
+import {
+  emailCases,
+  genderCases,
+  nameCases,
+  statusCases,
+  ValidationCase,
+} from "../../modules/validation/validationMatrix";
 import { Users } from "../../modules/requests/users";
-
 
 const bearerToken = process.env.BEARER_TOKEN!;
 
@@ -16,7 +21,11 @@ testGroups.forEach(({ label, cases }) => {
   test.describe(`${label} field validation`, () => {
     cases.forEach(({ name, override, expectedStatus }) => {
       test(`Should fail when ${name}`, async ({ request }) => {
-        const response = await Users.createNewUser(request, bearerToken, override);
+        const response = await Users.createNewUser(
+          request,
+          bearerToken,
+          override,
+        );
         expect(response.status()).toBe(expectedStatus);
       });
     });

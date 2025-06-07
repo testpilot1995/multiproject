@@ -10,7 +10,7 @@ export class Users {
     request: APIRequestContext,
     adminToken: string,
     userId: number,
-    del: boolean = false
+    del: boolean = false,
   ): Promise<APIResponse> {
     let response: APIResponse;
     await expect
@@ -21,7 +21,7 @@ export class Users {
               .href,
             {
               headers: setHeader(adminToken),
-            }
+            },
           );
           return del ? response.status() === 404 : response.ok();
         },
@@ -29,7 +29,7 @@ export class Users {
           message: "Failed to find User!",
           intervals: [5_000],
           timeout: 35_000,
-        }
+        },
       )
       .toBe(true);
     return response!;
@@ -37,7 +37,7 @@ export class Users {
   static async createNewUser(
     request: APIRequestContext,
     token: string,
-    override: Partial<User> = {}
+    override: Partial<User> = {},
   ): Promise<APIResponse> {
     try {
       const baseUser: User = {
@@ -63,7 +63,7 @@ export class Users {
     request: APIRequestContext,
     token: string,
     userId: number,
-    override: Partial<User> = {}
+    override: Partial<User> = {},
   ): Promise<APIResponse> {
     try {
       const baseUser: User = {
@@ -75,7 +75,7 @@ export class Users {
 
       const data: Partial<User> = { ...baseUser, ...override };
       const fullUrl = new URL(
-        `${process.env.API_BASE_URL!}${getUserByUserId(userId)}`
+        `${process.env.API_BASE_URL!}${getUserByUserId(userId)}`,
       ).href;
 
       return await request.patch(fullUrl, {
@@ -89,11 +89,11 @@ export class Users {
   static async deleteUser(
     request: APIRequestContext,
     token: string,
-    userId: number
+    userId: number,
   ): Promise<APIResponse> {
     try {
       const fullUrl = new URL(
-        `${process.env.API_BASE_URL!}${getUserByUserId(userId)}`
+        `${process.env.API_BASE_URL!}${getUserByUserId(userId)}`,
       ).href;
 
       return await request.delete(fullUrl, {

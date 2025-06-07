@@ -14,8 +14,8 @@ test.describe(`Edit user`, () => {
 
   test("Delete user what added before", async ({ request }) => {
     const deleteUsers = await Users.deleteUser(request, bearerToken!, userId);
-    expect.soft(deleteUsers.status()).toBe(204)
-    const getUsers = await Users.getUsers(request, bearerToken!, userId, true)
-    expect(getUsers.status()).toBe(404)
-});
+    expect.soft(deleteUsers.status()).toBe(204);
+    const getUsers = await Users.getUsers(request, bearerToken!, userId, true);
+    expect(getUsers.status()).toBe(404);
+  });
 });
