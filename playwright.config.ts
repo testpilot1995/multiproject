@@ -28,7 +28,6 @@ export default defineConfig({
         baseURL: process.env.BASE_URL,
         ...devices["Desktop Chrome"],
         isMobile: false,
-        headless:false,
       },
     },
     {
