@@ -21,10 +21,26 @@ export default defineConfig({
   retries: 1,
   projects: [
     {
-      name: "UI",
+      name: "Desktop",
       testDir: "./tests/UI",
+      use: {
+        ignoreHTTPSErrors: true,
+        baseURL: process.env.BASE_URL,
+        ...devices["Desktop Chrome"],
+        isMobile: false,
+        headless:false,
+      },
     },
-
+    {
+      name: "Mobile",
+      testDir: "./tests/UI",
+      use: {
+        ignoreHTTPSErrors: true,
+        baseURL: process.env.BASE_URL,
+        ...devices["Pixel 5"],
+        isMobile: true,
+      },
+    },
     {
       testDir: "./tests/API",
       name: "API",
