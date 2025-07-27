@@ -21,21 +21,21 @@ Install dependencies:
 npm install
 Run all tests:
 
-bash
+```bash
 npx playwright test
 Run only UI or API tests:
 
-bash
+```bash
 npx playwright test tests/ui
 npx playwright test tests/api
 Run tests by tag:
 
-bash
+```bash
 npx playwright test --grep @smoke
 Open HTML report:
 
-bash
+```bash
 npx playwright show-report
 
-CI/CD
+## CI/CD
 Tests are automatically executed on push  request via CI (e.g., GitHub Actions). Test results, traces, and reports are uploaded as artifacts.
