@@ -4,13 +4,13 @@ This is a lightweight test automation framework using [Playwright](https://playw
 
 ## Features
 
-- UI testing with Playwright (Chromium, Firefox, WebKit)
+- UI testing with Playwright
 - API testing using Playwright's request API
 - Simple Page Object Model (POM)
 - Environment-based configuration
 - Test tags (e.g., @smoke, @regression)
 - HTML reports and trace generation
-- CI/CD integration (e.g., GitHub Actions, GitLab CI, Jenkins)
+- CI/CD integration (e.g., GitHub Actions)
 
 
 ## Getting Started
